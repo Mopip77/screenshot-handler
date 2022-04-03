@@ -14,7 +14,8 @@ func (cmd ConvertToBase64Command) ExecuteCommand(ctx ImageCommandContext) error 
 	base64Output := base64.StdEncoding.EncodeToString(ctx.ImageContent)
 	output.Fmt.Println(base64Output)
 	util.WriteToClipboard(util.CLIPBOARD_FORMAT_TEXT, []byte(base64Output))
-	output.GreengFmt.Println("base64 encoded image has been copied to clipboard")
+	output.GreenFmt.Printf("\n[file path] %s\n", ctx.ImagePath)
+	output.GreenFmt.Println("base64 encoded image has been copied to clipboard")
 	return nil
 }
 

@@ -4,6 +4,6 @@ import "github.com/fatih/color"
 
 var (
 	Fmt = color.New()
-	GreengFmt = color.New(color.FgGreen)
+	GreenFmt = color.New(color.FgGreen)
 	RedFmt = color.New(color.FgRed)
 )
