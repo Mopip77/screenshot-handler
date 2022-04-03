@@ -2,9 +2,10 @@ package command
 
 import (
 	"io/ioutil"
-	"screenshot-handler/infra/output"
-	"screenshot-handler/util"
 	"strings"
+
+	"github.com/Mopip77/screenshot-handler/infra/output"
+	"github.com/Mopip77/screenshot-handler/util"
 
 	"github.com/urfave/cli/v2"
 )

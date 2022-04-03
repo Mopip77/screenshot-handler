@@ -5,9 +5,10 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"screenshot-handler/config"
-	"screenshot-handler/consts"
 	"time"
+
+	"github.com/Mopip77/screenshot-handler/config"
+	"github.com/Mopip77/screenshot-handler/consts"
 
 	"github.com/fatih/color"
 	"github.com/go-resty/resty/v2"

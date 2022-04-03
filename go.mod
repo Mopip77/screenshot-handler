@@ -1,4 +1,4 @@
-module screenshot-handler
+module github.com/Mopip77/screenshot-handler
 
 go 1.18
 

@@ -4,7 +4,8 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"screenshot-handler/config"
+
+	"github.com/Mopip77/screenshot-handler/config"
 
 	"github.com/fatih/color"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"

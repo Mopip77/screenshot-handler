@@ -4,8 +4,9 @@ import (
 	"errors"
 	"io/ioutil"
 	"path/filepath"
-	"screenshot-handler/config"
 	"sort"
+
+	"github.com/Mopip77/screenshot-handler/config"
 
 	"github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli/v2"

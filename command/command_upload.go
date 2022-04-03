@@ -2,9 +2,10 @@ package command
 
 import (
 	"fmt"
-	"screenshot-handler/config"
-	"screenshot-handler/infra/output"
-	"screenshot-handler/util"
+
+	"github.com/Mopip77/screenshot-handler/config"
+	"github.com/Mopip77/screenshot-handler/infra/output"
+	"github.com/Mopip77/screenshot-handler/util"
 
 	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"

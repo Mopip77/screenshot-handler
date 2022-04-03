@@ -3,8 +3,9 @@ package util
 import (
 	"fmt"
 	"io/ioutil"
-	"screenshot-handler/config"
 	"testing"
+
+	"github.com/Mopip77/screenshot-handler/config"
 )
 
 func TestTencentOcr(t *testing.T) {

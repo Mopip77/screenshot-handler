@@ -2,8 +2,9 @@ package command
 
 import (
 	"encoding/base64"
-	"screenshot-handler/infra/output"
-	"screenshot-handler/util"
+
+	"github.com/Mopip77/screenshot-handler/infra/output"
+	"github.com/Mopip77/screenshot-handler/util"
 )
 
 type ConvertToBase64Command struct {

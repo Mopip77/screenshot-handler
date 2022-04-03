@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"screenshot-handler/infra/output"
+
+	"github.com/Mopip77/screenshot-handler/infra/output"
 
 	"github.com/gookit/config/v2"
 	"github.com/gookit/config/v2/yaml"
