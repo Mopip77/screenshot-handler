@@ -20,6 +20,8 @@ func (cmd UploadCommand) ExecuteCommand(ctx ImageCommandContext) error {
 	switch config.GlobalConfig.Upload.Use {
 	case "smms":
 		imageUrl, err = util.UploadToSmms(ctx.ImageContent)
+	case "github":
+		imageUrl, err = util.UploadToGithub(ctx.ImageContent)
 	}
 
 	if err != nil {
@@ -29,7 +31,7 @@ func (cmd UploadCommand) ExecuteCommand(ctx ImageCommandContext) error {
 	markdownText := fmt.Sprintf("![%s](%s)", ctx.ImageName, imageUrl)
 	util.WriteToClipboard(util.CLIPBOARD_FORMAT_TEXT, []byte(markdownText))
 
-	output.Fmt.Printf("upload image to %s success, url: %s\n\n", color.CyanString(config.GlobalConfig.Upload.Use),  color.GreenString(imageUrl))
+	output.Fmt.Printf("upload image to %s success, url: %s\n\n", color.CyanString(config.GlobalConfig.Upload.Use), color.GreenString(imageUrl))
 	// print templates
 	output.Fmt.Printf("Markdown: %s\n", markdownText)
 	output.Fmt.Printf("BBCode  : [IMG]%s[/IMG]\n", imageUrl)
@@ -44,6 +46,8 @@ func (cmd UploadCommand) ValidateRequiredConfig(ctx ImageCommandContext) error {
 	switch config.GlobalConfig.Upload.Use {
 	case "smms":
 		return util.CheckRequiredSmmsConfig()
+	case "github":
+		return util.CheckRequiredGithubConfig()
 	case "":
 		return fmt.Errorf(color.BlueString("upload.use") + " is not set, please set it in config file")
 	default:

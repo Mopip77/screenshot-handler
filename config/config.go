@@ -13,9 +13,14 @@ import (
 
 type Config struct {
 	ScreenshotFolder string `mapstructure:"screenshot_folder"`
-	Upload struct {
-		Use string `mapstructure:"use"`
+	Upload           struct {
+		Use       string `mapstructure:"use"`
 		SmmsToken string `mapstructure:"smms_token"`
+		Github    struct {
+			Username string `mapstructure:"username"`
+			Repo     string `mapstructure:"repo"`
+			Token    string `mapstructure:"token"`
+		} `mapstructure:"github"`
 	} `mapstructure:"upload"`
 }
 

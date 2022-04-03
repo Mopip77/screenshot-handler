@@ -12,7 +12,7 @@ import (
 var (
 	commands = []ImageCommand{
 		ConvertToBase64Command{},
-		OcrCommand{},
+		UploadCommand{},
 	}
 )
 
