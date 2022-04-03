@@ -13,6 +13,10 @@ import (
 
 type Config struct {
 	ScreenshotFolder string `mapstructure:"screenshot_folder"`
+	Upload struct {
+		Use string `mapstructure:"use"`
+		SmmsToken string `mapstructure:"smms_token"`
+	} `mapstructure:"upload"`
 }
 
 var (

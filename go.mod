@@ -11,10 +11,12 @@ require (
 	golang.org/x/exp v0.0.0-20190731235908-ec7cb31e5a56 // indirect
 	golang.org/x/image v0.0.0-20211028202545-6944b10bf410 // indirect
 	golang.org/x/mobile v0.0.0-20210716004757-34ab1303b554 // indirect
+	golang.org/x/net v0.0.0-20211029224645-99673261e6eb // indirect
 )
 
 require (
 	github.com/fatih/color v1.13.0
+	github.com/go-resty/resty/v2 v2.7.0
 	github.com/gookit/goutil v0.3.15 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect

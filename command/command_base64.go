@@ -7,7 +7,7 @@ import (
 )
 
 type ConvertToBase64Command struct {
-
+	abstractImageCommand
 }
 
 func (cmd ConvertToBase64Command) ExecuteCommand(ctx ImageCommandContext) error {
@@ -16,10 +16,6 @@ func (cmd ConvertToBase64Command) ExecuteCommand(ctx ImageCommandContext) error 
 	util.WriteToClipboard(util.CLIPBOARD_FORMAT_TEXT, []byte(base64Output))
 	output.GreenFmt.Printf("\n[file path] %s\n", ctx.ImagePath)
 	output.GreenFmt.Println("base64 encoded image has been copied to clipboard")
-	return nil
-}
-
-func (cmd ConvertToBase64Command) ValidateRequiredConfig(ctx ImageCommandContext) error {
 	return nil
 }
 
