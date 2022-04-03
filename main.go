@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"screenshot-handler/command"
-	"screenshot-handler/config"
-	"screenshot-handler/infra/output"
+
+	"github.com/Mopip77/screenshot-handler/command"
+	"github.com/Mopip77/screenshot-handler/config"
+	"github.com/Mopip77/screenshot-handler/infra/output"
 
 	"github.com/urfave/cli/v2"
 )
