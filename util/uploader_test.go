@@ -14,7 +14,7 @@ func TestUploadToSmms(t *testing.T) {
 
 func TestUploadToGithub(t *testing.T) {
 	imageContent, _ := base64.StdEncoding.DecodeString(imageBase64)
-	if _, err := UploadToGithub(imageContent); err != nil {
+	if _, err := UploadToGithub(imageContent, true); err != nil {
 		t.Error(err)
 	}
 }

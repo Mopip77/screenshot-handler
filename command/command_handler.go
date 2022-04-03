@@ -13,6 +13,7 @@ var (
 	commands = []ImageCommand{
 		ConvertToBase64Command{},
 		UploadCommand{},
+		OcrCommand{},
 	}
 )
 

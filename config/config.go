@@ -13,7 +13,8 @@ import (
 
 type Config struct {
 	ScreenshotFolder string `mapstructure:"screenshot_folder"`
-	Upload           struct {
+
+	Upload struct {
 		Use       string `mapstructure:"use"`
 		SmmsToken string `mapstructure:"smms_token"`
 		Github    struct {
@@ -22,6 +23,14 @@ type Config struct {
 			Token    string `mapstructure:"token"`
 		} `mapstructure:"github"`
 	} `mapstructure:"upload"`
+
+	Ocr struct {
+		Use     string `mapstructure:"use"`
+		Tencent struct {
+			SecretId  string `mapstructure:"secret_id"`
+			SecretKey string `mapstructure:"secret_key"`
+		} `mapstructure:"tencent"`
+	} `mapstructure:"ocr"`
 }
 
 var (

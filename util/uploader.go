@@ -54,7 +54,7 @@ func UploadToSmms(imageContent []byte) (string, error) {
 	return response.Data.Url, nil
 }
 
-func CheckRequiredSmmsConfig() error {
+func CheckRequiredUploadSmmsConfig() error {
 	if config.GlobalConfig.Upload.SmmsToken == "" {
 		return fmt.Errorf("upload.smms_token is empty, please set it in config file")
 	}
@@ -120,7 +120,7 @@ func UploadToGithub(imageContent []byte, useJsDeliver bool) (string, error) {
 	return imageUrl, nil
 }
 
-func CheckRequiredGithubConfig() error {
+func CheckRequiredUploadGithubConfig() error {
 	if config.GlobalConfig.Upload.Github.Username == "" {
 		return fmt.Errorf("%s is empty, please set it in config file", color.BlueString("upload.github.username"))
 	}

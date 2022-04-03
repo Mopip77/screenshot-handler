@@ -49,9 +49,9 @@ func (cmd UploadCommand) ExecuteCommand(ctx ImageCommandContext) error {
 func (cmd UploadCommand) ValidateRequiredConfig(ctx ImageCommandContext) error {
 	switch config.GlobalConfig.Upload.Use {
 	case "smms":
-		return util.CheckRequiredSmmsConfig()
+		return util.CheckRequiredUploadSmmsConfig()
 	case "github":
-		return util.CheckRequiredGithubConfig()
+		return util.CheckRequiredUploadGithubConfig()
 	case "":
 		return fmt.Errorf(color.BlueString("upload.use") + " is not set, please set it in config file")
 	default:
