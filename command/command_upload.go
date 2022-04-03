@@ -10,6 +10,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+var (
+	useJsDeliver bool
+)
+
 type UploadCommand struct {
 	abstractImageCommand
 }
@@ -21,7 +25,7 @@ func (cmd UploadCommand) ExecuteCommand(ctx ImageCommandContext) error {
 	case "smms":
 		imageUrl, err = util.UploadToSmms(ctx.ImageContent)
 	case "github":
-		imageUrl, err = util.UploadToGithub(ctx.ImageContent)
+		imageUrl, err = util.UploadToGithub(ctx.ImageContent, useJsDeliver)
 	}
 
 	if err != nil {
@@ -56,30 +60,25 @@ func (cmd UploadCommand) ValidateRequiredConfig(ctx ImageCommandContext) error {
 }
 
 func (cmd UploadCommand) GetCommandName() string {
-	return "ocr"
+	return "upload"
 }
 
 func (cmd UploadCommand) GetCommandHelpName() []string {
-	return []string{"o"}
+	return []string{"u"}
 }
 
 func (cmd UploadCommand) GetUsage() string {
-	return "screenshot ocr with [options]"
+	return "screenshot upload with [options]"
 }
 
 func (cmd UploadCommand) GetCommandFlags() []cli.Flag {
 	return []cli.Flag{
 		&cli.BoolFlag{
-			Name:    "linefeed",
-			Aliases: []string{"lf"},
-			Value:   true,
-			Usage:   "linefeed with ocr result",
-		},
-		&cli.BoolFlag{
-			Name:    "fullwidth",
-			Aliases: []string{"F"},
-			Value:   false,
-			Usage:   "transfrom halfwidth to fullwidth",
+			Name:        "js-deliver",
+			Aliases:     []string{"jsd"},
+			Value:       true,
+			Usage:       "use js deliver as cdn (only for github)",
+			Destination: &useJsDeliver,
 		},
 	}
 }

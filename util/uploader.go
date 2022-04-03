@@ -71,15 +71,13 @@ type GithubUploadResponse struct {
 	} `json:"content"`
 }
 
-func UploadToGithub(imageContent []byte) (string, error) {
+func UploadToGithub(imageContent []byte, useJsDeliver bool) (string, error) {
 	path := fmt.Sprintf("%s/%s.png", time.Now().Format("20060102"), time.Now().Format("150405"))
 
 	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/contents/%s",
 		config.GlobalConfig.Upload.Github.Username,
 		config.GlobalConfig.Upload.Github.Repo,
 		path)
-
-	fmt.Println("url:", url)
 
 	resp, err := resty.New().R().
 		SetHeader("Accept", "application/vnd.github.v3+json").
@@ -105,12 +103,21 @@ func UploadToGithub(imageContent []byte) (string, error) {
 		return "", fmt.Errorf("upload to github failed, %s", errMsg)
 	}
 
+	var imageUrl string
 	var response GithubUploadResponse
 	if err := json.Unmarshal(resp.Body(), &response); err != nil {
 		return "", err
 	}
+	imageUrl = response.Content.DownloadUrl
 
-	return response.Content.DownloadUrl, nil
+	if useJsDeliver {
+		imageUrl = fmt.Sprintf("https://cdn.jsdelivr.net/gh/%s/%s/%s",
+			config.GlobalConfig.Upload.Github.Username,
+			config.GlobalConfig.Upload.Github.Repo,
+			path)
+	}
+
+	return imageUrl, nil
 }
 
 func CheckRequiredGithubConfig() error {
