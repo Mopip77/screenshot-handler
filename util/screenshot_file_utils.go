@@ -5,14 +5,54 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/Mopip77/screenshot-handler/config"
+	"github.com/Mopip77/screenshot-handler/consts"
 
 	"github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli/v2"
 )
 
-func GetLatestScreenshotPath(ctx *cli.Context) (string, error) {
+func LoadScreenshot(ctx *cli.Context) (imageName, imagePath string, imageContent []byte, fromClipboard bool, err error) {
+
+	if ctx.Bool("from-dir") {
+		imagePath, err = getLatestScreenshotFile()
+		if err != nil {
+			return
+		}
+	} else if ctx.String("file") != "" {
+		imagePath = ctx.String("file")
+		imagePath, err = homedir.Expand(imagePath)
+		if err != nil {
+			return
+		}
+		imagePath, err = filepath.Abs(imagePath)
+		if err != nil {
+			return
+		}
+	} else {
+		fromClipboard = true
+		imageName = consts.SCREENSHOT_FILENAME
+		imageContent, err = ReadImageFromClipboard()
+		if err != nil {
+			return
+		}
+	}
+
+	if !fromClipboard {
+		splits := strings.Split(imagePath, "/")
+		imageName = splits[len(splits)-1]
+		imageContent, err = ioutil.ReadFile(imagePath)
+		if err != nil {
+			return
+		}
+	}
+
+	return
+}
+
+func getLatestScreenshotFile() (string, error) {
 	folder, err := homedir.Expand(config.GlobalConfig.ScreenshotFolder)
 	if err != nil {
 		return "", err

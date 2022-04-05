@@ -1,20 +1,22 @@
-package util
+package util_test
 
 import (
 	"encoding/base64"
 	"testing"
+
+	"github.com/Mopip77/screenshot-handler/util"
 )
 
 func TestUploadToSmms(t *testing.T) {
 	imageContent, _ := base64.StdEncoding.DecodeString(imageBase64)
-	if _, err := UploadToSmms(imageContent); err != nil {
+	if _, err := util.UploadToSmms(imageContent); err != nil {
 		t.Error(err)
 	}
 }
 
 func TestUploadToGithub(t *testing.T) {
 	imageContent, _ := base64.StdEncoding.DecodeString(imageBase64)
-	if _, err := UploadToGithub(imageContent, true); err != nil {
+	if _, err := util.UploadToGithub(imageContent, true); err != nil {
 		t.Error(err)
 	}
 }

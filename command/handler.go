@@ -1,9 +1,6 @@
 package command
 
 import (
-	"io/ioutil"
-	"strings"
-
 	"github.com/Mopip77/screenshot-handler/infra/output"
 	"github.com/Mopip77/screenshot-handler/util"
 
@@ -37,24 +34,18 @@ func BuildCommands() []*cli.Command {
 
 func ExecuteCommand(ctx *cli.Context) error {
 	// load file
-	imagePath, err := util.GetLatestScreenshotPath(ctx)
+	imageName, imagePath, imageContent, fromClipboard, err := util.LoadScreenshot(ctx)
 	if err != nil {
 		output.RedFmt.Println("load screenshot file failed,", err)
 		return err
 	}
-	splits := strings.Split(imagePath, "/")
-	imageName := splits[len(splits)-1]
-	imageContent, err := ioutil.ReadFile(imagePath)
-	if err != nil {
-		output.RedFmt.Printf("read screenshot failed, %s\n", err.Error())
-		return err
-	}
 
 	imageCommandCtx := ImageCommandContext{
-		Context:      ctx,
-		ImageName:    imageName,
-		ImagePath:    imagePath,
-		ImageContent: imageContent,
+		Context:       ctx,
+		FromClipboard: fromClipboard,
+		ImageName:     imageName,
+		ImagePath:     imagePath,
+		ImageContent:  imageContent,
 	}
 
 	for _, command := range commands {

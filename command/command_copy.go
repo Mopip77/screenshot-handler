@@ -27,7 +27,6 @@ func (cmd CopyCommand) ExecuteCommand(ctx ImageCommandContext) error {
 	}
 
 	file, _ := os.Stat(dstpath)
-	fmt.Println("file,", file)
 	if file != nil {
 		if !file.IsDir() && !forceOverwrite {
 			return fmt.Errorf("dstpath already exists, use -f to overwrite")
@@ -45,7 +44,7 @@ func (cmd CopyCommand) ExecuteCommand(ctx ImageCommandContext) error {
 
 	io.Copy(dstFile, bytes.NewReader(ctx.ImageContent))
 
-	output.Fmt.Printf("Successfully copt to %s\n", color.GreenString(dstpath))
+	output.Fmt.Printf("Successfully copy to %s\n", color.GreenString(dstpath))
 
 	return nil
 }

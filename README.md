@@ -2,14 +2,16 @@
 
 It provides a set of image-handling tools to handle screenshot after saved.
 
-## Support handlers
+## Avaliable handlers
 
 - upload to image-hosting
 - ocr
 - encode to base64
-- image search
-- add invisible watermark to image
+- copy to path
+- image search (TODO)
+- add invisible watermark to image (TODO)
 
 ## How to use
 
+### Install
 

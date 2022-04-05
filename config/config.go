@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/Mopip77/screenshot-handler/consts"
 	"github.com/Mopip77/screenshot-handler/infra/output"
 
 	"github.com/gookit/config/v2"
@@ -39,15 +40,11 @@ var (
 	_ConfigFilePath string
 )
 
-const (
-	_CONFIG_FILENAME = ".schrc.yaml"
-)
-
 func InitConfig() (err error) {
 	if home, err := os.UserHomeDir(); err != nil {
 		panic(err)
 	} else {
-		_ConfigFilePath = fmt.Sprintf("%s/%s", home, _CONFIG_FILENAME)
+		_ConfigFilePath = fmt.Sprintf("%s/%s", home, consts.CONFIG_FILE_NAME)
 	}
 
 	config.WithOptions(config.ParseEnv)

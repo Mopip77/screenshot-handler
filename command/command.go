@@ -5,10 +5,11 @@ import (
 )
 
 type ImageCommandContext struct {
-	Context      *cli.Context
-	ImageName    string
-	ImagePath    string
-	ImageContent []byte
+	Context       *cli.Context
+	FromClipboard bool
+	ImageName     string
+	ImagePath     string
+	ImageContent  []byte
 }
 
 type ImageCommand interface {
