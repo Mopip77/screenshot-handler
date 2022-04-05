@@ -36,15 +36,15 @@ func (cmd abstractImageCommand) ValidateRequiredConfig(ctx ImageCommandContext) 
 }
 
 func (cmd abstractImageCommand) GetCommandName() string {
-	return "implementted"
+	return "not-implement"
 }
 
 func (cmd abstractImageCommand) GetCommandHelpName() []string {
-	return []string{"implementted"}
+	return []string{}
 }
 
 func (cmd abstractImageCommand) GetUsage() string {
-	return "implementted"
+	return "not-implement"
 }
 
 func (cmd abstractImageCommand) GetCategory() string {

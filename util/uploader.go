@@ -57,7 +57,7 @@ func UploadToSmms(imageContent []byte) (string, error) {
 
 func CheckRequiredUploadSmmsConfig() error {
 	if config.GlobalConfig.Upload.SmmsToken == "" {
-		return fmt.Errorf("upload.smms_token is empty, please set it in config file")
+		return fmt.Errorf(color.BlueString("upload.smms_token") + " is empty, please set it in config file")
 	}
 	return nil
 }

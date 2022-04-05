@@ -1,7 +1,8 @@
 package command
 
 import (
-	"github.com/Mopip77/screenshot-handler/infra/output"
+	"fmt"
+
 	"github.com/Mopip77/screenshot-handler/util"
 
 	"github.com/urfave/cli/v2"
@@ -36,8 +37,7 @@ func ExecuteCommand(ctx *cli.Context) error {
 	// load file
 	imageName, imagePath, imageContent, fromClipboard, err := util.LoadScreenshot(ctx)
 	if err != nil {
-		output.RedFmt.Println("load screenshot file failed,", err)
-		return err
+		return fmt.Errorf("load screenshot file failed, %w", err)
 	}
 
 	imageCommandCtx := ImageCommandContext{

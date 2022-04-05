@@ -49,8 +49,6 @@ func OcrTencent(imageContent []byte, linefeed, useFullWidth bool) (string, error
 		return "", err
 	}
 
-	fmt.Println(resp.ToJsonString())
-
 	var response OcrTencentResponse
 	if err := json.Unmarshal([]byte(resp.ToJsonString()), &response); err != nil {
 		return "", err

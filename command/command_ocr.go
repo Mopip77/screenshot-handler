@@ -34,7 +34,7 @@ func (cmd OcrCommand) ExecuteCommand(ctx ImageCommandContext) error {
 
 	util.WriteToClipboard(util.CLIPBOARD_FORMAT_TEXT, []byte(ocrResult))
 
-	output.GreenFmt.Println("ocr result (saved to clipboard):")
+	output.CyanFmt.Println("ocr result (saved to clipboard):")
 	output.Fmt.Println(ocrResult)
 
 	return nil

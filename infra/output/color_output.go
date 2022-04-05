@@ -6,4 +6,5 @@ var (
 	Fmt = color.New()
 	GreenFmt = color.New(color.FgGreen)
 	RedFmt = color.New(color.FgRed)
+	CyanFmt = color.New(color.FgCyan)
 )

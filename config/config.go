@@ -8,6 +8,7 @@ import (
 
 	"github.com/Mopip77/screenshot-handler/consts"
 	"github.com/Mopip77/screenshot-handler/infra/output"
+	"github.com/fatih/color"
 
 	"github.com/gookit/config/v2"
 	"github.com/gookit/config/v2/yaml"
@@ -50,10 +51,9 @@ func InitConfig() (err error) {
 	config.WithOptions(config.ParseEnv)
 	config.AddDriver(yaml.Driver)
 	if _, err = os.Stat(_ConfigFilePath); errors.Is(err, os.ErrNotExist) {
-		output.RedFmt.Printf("config file %s not found\n", _ConfigFilePath)
-		createDefaultConfigFileTemplate()
-		output.RedFmt.Printf("default config file %s created, now set screenshot folder in %s\n", _ConfigFilePath, _ConfigFilePath)
-		return
+		if err = initTemplate(); err != nil {
+			return err
+		}
 	}
 	err = config.LoadFiles(_ConfigFilePath)
 	if err != nil {
@@ -64,10 +64,38 @@ func InitConfig() (err error) {
 	return nil
 }
 
-func createDefaultConfigFileTemplate() {
-	defaultConfigFileTemplate := `screenshot_folder: <change-to-your-screenshot-folder>`
+func initTemplate() error {
+	output.Fmt.Printf("config file %s not found, ", _ConfigFilePath)
+	output.CyanFmt.Add(color.Bold).Println("generate default config.")
+
+	return createDefaultConfigFileTemplate()
+}
+
+func createDefaultConfigFileTemplate() error {
+	defaultConfigFileTemplate := `
+# default screenshot folder
+screenshot_folder: <change-to-your-screenshot-folder>
+
+# upload to image host settings
+upload:
+  use: # smms | github
+  smms_token: 
+  github:
+    username: 
+    repo: 
+    token: 
+
+# ocr settings
+ocr:
+  use: # tencent
+  tencent:
+    secret_id: 
+    secret_key: 
+`
 
 	if err := ioutil.WriteFile(_ConfigFilePath, []byte(defaultConfigFileTemplate), 0644); err != nil {
-		output.Fmt.Printf("generate default config file %s failed, %s", _ConfigFilePath, err)
+		return err
 	}
+
+	return nil
 }

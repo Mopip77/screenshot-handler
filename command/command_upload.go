@@ -42,7 +42,7 @@ func (cmd UploadCommand) ExecuteCommand(ctx ImageCommandContext) error {
 	output.Fmt.Printf("BBCode  : [IMG]%s[/IMG]\n", imageUrl)
 	output.Fmt.Printf("HTML    : <img src=\"%s\" alt=\"%s\">\n", imageUrl, ctx.ImageName)
 
-	output.GreenFmt.Println("\nmarkdown template saved to clipboard.")
+	output.CyanFmt.Println("\nmarkdown template saved to clipboard.")
 
 	return nil
 }

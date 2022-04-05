@@ -44,7 +44,7 @@ func (cmd CopyCommand) ExecuteCommand(ctx ImageCommandContext) error {
 
 	io.Copy(dstFile, bytes.NewReader(ctx.ImageContent))
 
-	output.Fmt.Printf("Successfully copy to %s\n", color.GreenString(dstpath))
+	output.Fmt.Printf("Successfully copy to %s\n", color.CyanString(dstpath))
 
 	return nil
 }

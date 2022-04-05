@@ -20,7 +20,7 @@ func ReadImageFromClipboard() ([]byte, error) {
 
 	imageContent := clipboard.Read(clipboard.FmtImage)
 	if imageContent == nil {
-		return nil, fmt.Errorf("no image in clipboard")
+		return nil, fmt.Errorf("no image found in clipboard")
 	}
 
 	return imageContent, nil
