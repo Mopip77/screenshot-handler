@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -37,8 +36,10 @@ func main() {
 			},
 		},
 		ExitErrHandler: func(ctx *cli.Context, err error) {
-			fmt.Println(err)
-			os.Exit(1)
+			if err != nil {
+				output.RedFmt.Println(err)
+				os.Exit(1)
+			}
 		},
 	}
 
