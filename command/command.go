@@ -19,6 +19,7 @@ type ImageCommand interface {
 	GetCommandHelpName() []string
 	GetUsage() string
 	GetCategory() string
+	GetArgUsages() string
 	GetCommandFlags() []cli.Flag
 }
 
@@ -46,6 +47,10 @@ func (cmd abstractImageCommand) GetUsage() string {
 }
 
 func (cmd abstractImageCommand) GetCategory() string {
+	return ""
+}
+
+func (cmd abstractImageCommand) GetArgUsages() string {
 	return ""
 }
 

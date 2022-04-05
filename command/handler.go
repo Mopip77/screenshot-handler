@@ -15,6 +15,7 @@ var (
 		ConvertToBase64Command{},
 		UploadCommand{},
 		OcrCommand{},
+		CopyCommand{},
 	}
 )
 
@@ -22,12 +23,13 @@ func BuildCommands() []*cli.Command {
 	var result []*cli.Command
 	for _, command := range commands {
 		result = append(result, &cli.Command{
-			Name:     command.GetCommandName(),
-			Aliases:  command.GetCommandHelpName(),
-			Usage:    command.GetUsage(),
-			Flags:    command.GetCommandFlags(),
-			Category: command.GetCategory(),
-			Action:   ExecuteCommand,
+			Name:      command.GetCommandName(),
+			Aliases:   command.GetCommandHelpName(),
+			Usage:     command.GetUsage(),
+			Flags:     command.GetCommandFlags(),
+			Category:  command.GetCategory(),
+			ArgsUsage: command.GetArgUsages(),
+			Action:    ExecuteCommand,
 		})
 	}
 	return result
