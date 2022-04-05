@@ -75,10 +75,10 @@ func (cmd UploadCommand) GetUsage() string {
 func (cmd UploadCommand) GetCommandFlags() []cli.Flag {
 	return []cli.Flag{
 		&cli.BoolFlag{
-			Name:        "js-deliver",
+			Name:        "js-delivr",
 			Aliases:     []string{"jsd"},
 			Value:       true,
-			Usage:       "use js deliver as cdn (only for github)",
+			Usage:       "use js delivr as cdn (only for github)",
 			Destination: &useJsDeliver,
 		},
 	}
