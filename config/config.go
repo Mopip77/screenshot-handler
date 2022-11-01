@@ -18,7 +18,7 @@ type Config struct {
 	ScreenshotFolder string `mapstructure:"screenshot_folder"`
 
 	Upload struct {
-		Use       string `mapstructure:"use"`
+		Use       []string `mapstructure:"use"`
 		SmmsToken string `mapstructure:"smms_token"`
 		Github    struct {
 			Username string `mapstructure:"username"`
