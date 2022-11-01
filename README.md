@@ -42,7 +42,9 @@ See `sch --help` for more information, the default config file `~/.schrc.yaml` w
     ```yaml
     # upload to image host settings
     upload:
-    use: # smms | github
+    use:  # support multiple host
+      - smms
+      - github
     smms_token:
     github:
         username: # github username
