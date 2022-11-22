@@ -12,12 +12,16 @@ type PriviewCommand struct {
 }
 
 func (cmd PriviewCommand) ExecuteCommand(ctx ImageCommandContext) error {
-	fileName := fmt.Sprintf("/tmp/sch-%s.png", time.Now().Format("2006-01-02_15-04-05"))
+	previewFilePath := ctx.ImagePath
 	if ctx.FromClipboard {
-		ioutil.WriteFile(fileName, ctx.ImageContent, 0644)
+		tmpPreviewFilePath := fmt.Sprintf("/tmp/sch-%s.png", time.Now().Format("2006-01-02_15-04-05"))
+		if err := ioutil.WriteFile(tmpPreviewFilePath, ctx.ImageContent, 0644); err != nil {
+			return err
+		}
+		previewFilePath = tmpPreviewFilePath
 	}
 	
-	exec.Command("open", fileName).Run()
+	exec.Command("open", previewFilePath).Run()
 
 	return nil
 }
