@@ -14,6 +14,7 @@ var (
 		UploadCommand{},
 		OcrCommand{},
 		CopyCommand{},
+		PriviewCommand{},
 	}
 )
 
